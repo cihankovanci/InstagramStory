@@ -3,6 +3,7 @@ import {Text, View} from 'react-native';
 import {Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import ProfileScreen from './src/screens/profile';
 
 function HomeScreen() {
   return (
@@ -36,30 +37,14 @@ function LikedScreen() {
   );
 }
 
-function ProfileScreen() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-      }}>
-      <Text>Profile!</Text>
-    </View>
-  );
-}
-
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        screenOptions={{headerShown: false}}
-        tabBarOptions={{
-          showLabel: false,
-        }}>
+        screenOptions={{headerShown: false, tabBarShowLabel: false}}
+        initialRouteName="Profile">
         <Tab.Screen
           name="Home"
           component={HomeScreen}
