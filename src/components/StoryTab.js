@@ -27,7 +27,7 @@ const StoryTab = props => {
         style={{
           width: '100%',
           justifyContent: 'space-around',
-          alignItems: 'center',
+          alignItems: 'flex-start',
 
           flexDirection: 'row',
           marginTop: 15,
@@ -35,33 +35,36 @@ const StoryTab = props => {
         <View
           style={{
             width: '24%',
-            backgroundColor: props.count >= 0 ? 'yellow' : 'gray',
-            height: 8,
-            borderRadius: 4,
+            backgroundColor: props.count >= 0 ? '#FFCC00' : 'white',
+            height: 3,
+            borderRadius: 2,
           }}>
           <Text>0</Text>
         </View>
         <View
           style={{
             width: '24%',
-            backgroundColor: props.count >= 1 ? 'yellow' : 'gray',
-            height: 8,
+            backgroundColor: props.count >= 1 ? '#FFCC00' : 'white',
+            height: 3,
+            borderRadius: 2,
           }}>
           <Text>1</Text>
         </View>
         <View
           style={{
             width: '24%',
-            backgroundColor: props.count >= 2 ? 'yellow' : 'gray',
-            height: 8,
+            backgroundColor: props.count >= 2 ? '#FFCC00' : 'white',
+            height: 3,
+            borderRadius: 2,
           }}>
           <Text>2</Text>
         </View>
         <View
           style={{
             width: '24%',
-            backgroundColor: props.count >= 3 ? 'yellow' : 'gray',
-            height: 8,
+            backgroundColor: props.count >= 3 ? '#FFCC00' : 'white',
+            height: 3,
+            borderRadius: 2,
           }}>
           <Text>3</Text>
         </View>

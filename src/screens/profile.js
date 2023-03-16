@@ -3,6 +3,8 @@ import {View, Text, Button, Modal, StyleSheet, Pressable} from 'react-native';
 import {createStore} from 'redux';
 import {Provider, useSelector, useDispatch} from 'react-redux';
 import Stories from './stories';
+import ProfileNameTab from '../components/ProfileComponents/ProfileNameTab';
+import ProfileTextInfo from '../components/ProfileComponents/ProfileTextInfo';
 
 const initialState = {
   counter: 0,
@@ -48,44 +50,50 @@ const Second = () => {
 
 export default function ProfileScreen() {
   const [modalVisible, setModalVisible] = useState(false);
+
+  const counter = useSelector(selector => selector.counter);
+
+  function HandleClick() {
+    setModalVisible(true);
+  }
   return (
-    <Provider store={createStore(reducers, initialState)}>
-      <View style={styles.centeredView}>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-            setModalVisible(!modalVisible);
-          }}>
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <Stories />
-              <Pressable
+    <View style={styles.centeredView}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert('Modal has been closed.');
+          setModalVisible(!modalVisible);
+        }}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Stories onClose={() => setModalVisible(false)} />
+            {/* <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setModalVisible(!modalVisible)}>
                 <Text style={styles.textStyle}>Hide Modal</Text>
-              </Pressable>
-            </View>
+              </Pressable> */}
           </View>
-        </Modal>
-        <Pressable
+        </View>
+      </Modal>
+      {/* <Pressable
           style={[styles.button, styles.buttonOpen]}
           onPress={() => setModalVisible(true)}>
           <Text style={styles.textStyle}>Show Modal</Text>
-        </Pressable>
-      </View>
-    </Provider>
+        </Pressable> */}
+
+      <ProfileNameTab
+        isActive={counter === 3 ? false : true}
+        onClick={HandleClick}
+      />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
   },
   modalView: {
     flex: 1,
